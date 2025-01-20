@@ -1,14 +1,18 @@
-"""Присвоить целой переменной h третью от конца цифру
-в записи положительного целого числа к"""
+"""Assign the third digit from the end
+of the positive integer to the integer variable h"""
+
+#Функция для определения третьей цифры с конца
+def define(num: int) -> int:
+    return num % 1000 // 100
 
 if __name__ == "__main__":
 
 #Ввод начального числа
-    k = int(input('Введите положительное целое число к > 99: '))
+    num1 = int(input('Введите положительное целое число к > 99: '))
 
 #Вариант 1
-    h = (k % 1000) // 100
-    print('Третья цифра с конца:', h)
+    third_digit = define(num1)
+    print('Третья цифра с конца:', third_digit)
 
 #Вариант 2
 # h = str(k)

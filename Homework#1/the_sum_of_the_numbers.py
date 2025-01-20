@@ -1,10 +1,10 @@
-"""Даны целое трехзначное число. Используя // и %,
-найти сумму его цифр"""
+"""Given a three-digit integer. Using // and %,
+find the sum of its digits"""
 
 
 # Функция для вычисления суммы цифр
-def calculation(x):
-    return x // 100 + (x % 100) // 10 + x % 10
+def calculation(x: int) -> int:
+    return x // 100 + x % 100 // 10 + x % 10
 
 if __name__ == "__main__":
 

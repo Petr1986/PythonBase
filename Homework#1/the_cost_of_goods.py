@@ -1,16 +1,19 @@
-"""Известна стоимость товара в копейках С.
-Найти стоимость в рублях r и копейках к"""
+"""The cost of the product in kopecks C is known.
+Find the cost in rubles r and kopecks k"""
+
+#Функция для вычисления цены
+def cost(k: int) -> tuple[int, int]:
+    ruble = k // 100
+    kopeck = k % 100
+    return ruble, kopeck
 
 if __name__ == "__main__":
 
 #Ввод данных
-    k = int(input("Введите стоимость товара в копейках: "))
+    k1 = int(input("Введите стоимость товара в копейках: "))
 
-#Вычисление количества рублей
-    r = k // 100
-
-#Вычисление остатка в копейках
-    remainder = k % 100
+#Вычисление цены в рублях и копейках
+    price_ruble, price_kopeck = cost(k1)
 
 #Вывод результатов
-    print(f'Стоимость товара: {r} рублей {remainder} копеек.')
+    print(f'Стоимость товара: {price_ruble} рублей {price_kopeck} копеек.')

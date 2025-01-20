@@ -1,21 +1,24 @@
-"""Сосчитать y = e ** a * sin(x) ** 2 - abs(x-a) / 7 двумя способами,
-первый - х вводится в радианах, второй х - вводится в градусах"""
+"""Calculate y = e ** a * sin(x) ** 2 - abs(x-a) / 7 in two ways,
+the first - x is entered in radians, the second - x is entered in degrees"""
 
 from math import e, sin, radians
+
+
+#Функция для вычисления уравнения
+def equation(a: int,x: int) -> tuple[float, float]:
+    result_radians = e ** a * sin(x) ** 2 - abs(x - a) / 7
+    result_degrees = e ** a * sin(radians(x)) ** 2 - abs(x - a) / 7
+    return result_radians, result_degrees
 
 if __name__ == "__main__":
 
 #Ввод данных
-    a = int(input('Введите значение а: '))
-    x = int(input('Введите значение х: '))
+    a1 = int(input('Введите значение а: '))
+    x1 = int(input('Введите значение х: '))
 
-#Вычисление уравнения, если х в радианах
-    y = e ** a * sin(x) ** 2 - abs(x - a) / 7
-
-#Вычисление уравнения, если х  в градусах
-    x1 = radians(x)
-    y1 = e ** a * sin(x1) ** 2 - abs(x - a) / 7
+#Вычисление уравнения
+    y_radians, y_degrees = equation(a1, x1)
 
 #Вывод результатов
-    print('Если х задан в радианах, у =', y)
-    print('Если х задан в градусах, y =', y1)
+    print(f'Если х задан в радианах, у = {y_radians:.4f}')
+    print(f'Если х задан в градусах, y = {y_degrees:.4f}')

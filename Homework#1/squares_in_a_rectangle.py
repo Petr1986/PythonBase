@@ -1,17 +1,22 @@
-"""Дан прямоугольник размером А х В.
-Сколько квадратов со стороной С можно вырезать из него?
-А, В, С - целые числа. Какова площадь оставшейся части"""
+"""A rectangle of size A x B is given.
+How many squares with side C can be cut out of it?
+A, B, C are integers. What is the area of the remaining part?"""
+
+#Функция для вычисления результатов
+def result(a: int, b: int, c: int) -> tuple[float, float]:
+    quantity_squares = (a // c) * (b // c)
+    remaining_area = a * b - quantity_squares * c ** 2
+    return quantity_squares, remaining_area
 
 if __name__ == "__main__":
 
 #Ввод данных
-    a, b = map(int, input('Введи длинны А и В, через пробел: ').split())
-    c = int(input('Введите длину С: '))
+    a1, b1 = map(int, input('Введи длинны А и В, через пробел: ').split())
+    c1 = int(input('Введите длину С: '))
 
-#Находим количество квадратов и оставшуюся площадь
-    quantity_squares = (a // c) * (b // c)
-    remaining_area = a * b - quantity_squares * c ** 2
+#Вычисление результатов
+    quantity, remaining = result(a1, b1, c1)
 
 #Вывод результатов
-    print(f'Из прямоугольника со сторонами А х В, можно вырезать: {quantity_squares} квадратов со стороной {c}')
-    print(f'Оставшаяся площадь: {remaining_area}')
+    print(f'Из прямоугольника со сторонами {a1} х {b1}, можно вырезать: {quantity} квадратов со стороной {c1}')
+    print(f'Оставшаяся площадь: {remaining}')

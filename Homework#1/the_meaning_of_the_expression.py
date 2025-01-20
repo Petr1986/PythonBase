@@ -1,13 +1,17 @@
-"""С клавиатуры вводятся четыре переменные целого типа:
-a, b, c, d, не равные 0. Сосчитать значение выражения y = 3ab - 4 / (c * d)"""
+"""Four integer variables are entered from the keyboard: a, b, c, d, not equal to 0.
+Calculate the value of the expression y = 3ab - 4 / (c * d)"""
+
+#Функция для вычисления уравнения
+def calculation (a: int, b: int, c: int, d: int) -> float:
+    return 3 * a * b - 4 / (c * d)
 
 if __name__ == "__main__":
 
 #Ввод данных
-    a,b,c,d = map(int, input('Введите значения a,b,c,d, через пробел: ').split())
+    a1, b1, c1, d1 = map(int, input('Введите значения a,b,c,d, через пробел: ').split())
 
 #Вычисление значения выражения
-    y = 3 * a * b - 4 / (c * d)
+    y = calculation(a1, b1, c1, d1)
 
 #Вывод результатов
     print(f'Результат выражения "y = 3ab - 4 / (c * d)": {y}')
