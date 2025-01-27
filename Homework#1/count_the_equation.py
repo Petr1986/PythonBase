@@ -1,6 +1,7 @@
 """Calculate y = e ** a * sin(x) ** 2 - abs(x-a) / 7 in two ways,
 the first - x is entered in radians, the second - x is entered in degrees"""
 
+import random
 from math import e, sin, radians
 
 
@@ -11,8 +12,8 @@ def equation(a: int,x: int) -> tuple[float, float]:
 
 if __name__ == "__main__":
 
-    a1 = int(input('Введите значение а: '))
-    x1 = int(input('Введите значение х: '))
+    a1 = random.randint(-100, 100)
+    x1 = random.randint(0, 100)
 
     y_radians, y_degrees = equation(a1, x1)
 

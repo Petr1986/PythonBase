@@ -1,6 +1,7 @@
 """Calculate y = e ** a * sin(x) ** 2 - sqrt(abs(c-b ** 2) / a) + d a<>0 in two ways,
 the first - x is entered in radians, the second - x is entered in degrees"""
 
+import random
 from math import e, sin, radians, sqrt
 
 def equation(a: int, b: int, c: int, d: int, x: int) -> tuple[float, float]:
@@ -10,11 +11,11 @@ def equation(a: int, b: int, c: int, d: int, x: int) -> tuple[float, float]:
 
 if __name__ == "__main__":
 
-    a1 = int(input('Введите значение a: '))
-    b1 = int(input('Введите значение b: '))
-    c1 = int(input('Введите значение c: '))
-    d1 = int(input('Введите значение d: '))
-    x1 = int(input('Введите значение x: '))
+    a1 = random.randint(-100, 100)
+    b1 = random.randint(-100, 100)
+    c1 = random.randint(-100, 100)
+    d1 = random.randint(-100, 100)
+    x1 = random.randint(0, 100)
 
     y_radians, y_degrees = equation(a1, b1, c1, d1, x1)
 

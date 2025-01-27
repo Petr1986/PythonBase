@@ -8,12 +8,15 @@ is 2. Consequently, we can replace adding the digit 2
 by adding 200. Based on this, we can form the equation
 237 = (x-2)/10 + 200"""
 
+import random
+
 def find_number(y) -> int:
     return int(str(y)[1:] + str(y)[0])
 
 if __name__ == "__main__":
 
-    a = int(input('Введите результат выражения: '))
+    a = random.randint(10, 10000)
 
     result = find_number(a)
+    print(f'Если итог выражения равен: {a}')
     print(f'Значение х: {result}')

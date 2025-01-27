@@ -2,30 +2,29 @@
 Find its perimeter and area"""
 
 import math
+import random
+
+def area_of_triangle(p1, p2, p3):
+    return abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1])) / 2
+
 
 def distance (d1: tuple[int, int],d2: tuple[int, int]) -> float:
     return math.sqrt((d2[0] - d1[0]) ** 2 + (d2[1] - d1[1]) ** 2)
 
-def calculations(a: tuple[int, int], b: tuple[int, int], c: tuple[int,int]) -> tuple[float, float]:
-    side_a = distance(b, c)
-    side_b = distance(a, c)
-    side_c = distance(a, b)
-
-    perimetr = side_a + side_b + side_c
-
-    s = perimetr / 2
-
-    area = math.sqrt(s * (s - side_a) * (s - side_b) * (s - side_c))
-
-    return perimetr, area
+def calculations(a: tuple[int, int], b: tuple[int, int], c: tuple[int,int]) -> float:
+    return distance(b, c) + distance(a, c) + distance(a, b)
 
 if __name__ == "__main__":
 
-    a1 = tuple(map(int, input('Введите (через пробел) координаты (x1,y1) вершины А:').split()))
-    b1 = tuple(map(int, input('Введите (через пробел) координаты (x2,y2) вершины В:').split()))
-    c1 = tuple(map(int, input('Введите (через пробел) координаты (x3,y3) вершины С:').split()))
+    while True:
+        a1 = (random.randint(-100, 100), random.randint(-100, 100))
+        b1 = (random.randint(-100, 100), random.randint(-100, 100))
+        c1 = (random.randint(-100, 100), random.randint(-100, 100))
+        if area_of_triangle(a1, b1, c1) > 0:
+            break
 
-    result_perimetr, result_area = calculations(a1, b1, c1)
+    result_perimetr = calculations(a1, b1, c1)
+    result_area = area_of_triangle(a1, b1, c1)
 
     print(f'Периметр треугольника АВС составляет: {result_perimetr:.2f}')
     print(f'Площадь треугольника АВС составляет: {result_area:.2f}')

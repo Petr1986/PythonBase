@@ -1,6 +1,8 @@
 """A rectangle of size A x B is given.
 How many squares with side C can be cut out of it?
 A, B, C are integers. What is the area of the remaining part?"""
+import random
+
 
 def result(a: int, b: int, c: int) -> tuple[float, float]:
     quantity_squares = (a // c) * (b // c)
@@ -9,8 +11,12 @@ def result(a: int, b: int, c: int) -> tuple[float, float]:
 
 if __name__ == "__main__":
 
-    a1, b1 = map(int, input('Введи длинны А и В, через пробел: ').split())
-    c1 = int(input('Введите длину С: '))
+    while True:
+        a1 = random.randint(1,100)
+        b1 = random.randint(1,100)
+        c1 = random.randint(1,100)
+        if c1 < a1 and c1 < b1:
+            break
 
     quantity, remaining = result(a1, b1, c1)
 

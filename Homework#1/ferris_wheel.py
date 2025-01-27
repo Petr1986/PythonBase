@@ -2,12 +2,15 @@
 When cabin #A is at the bottom, then cabin #B is at the top (A < B, A and B are of the same parity).
 How many cabins are there in the Ferris wheel?"""
 
+import random
+
 def quantity(a: int, b: int) -> int:
     return (b - a) * 2
 
 if __name__ == "__main__":
 
-    a1, b1 = map(int, input('Введите через пробел № кабинок А и В: ').split())
+    a1 = random.randint(1,10)
+    b1 = random.randint(11,20)
 
     result = quantity(a1, b1)
 
