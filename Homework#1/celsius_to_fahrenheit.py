@@ -14,4 +14,4 @@ if __name__ == "__main__":
 
     fahrenheit = conversion(celsius)
 
-    print("Температура по фаренгейту =", int(fahrenheit))
+    print("Temperature in Fahrenheit =", int(fahrenheit))

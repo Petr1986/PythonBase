@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     result = calculation(num)
 
-    print(f'Сумма цифр числа {num}, равна: {result}')
+    print(f'Sum of the digits of a number {num}, equal: {result}')

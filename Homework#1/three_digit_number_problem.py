@@ -18,5 +18,5 @@ if __name__ == "__main__":
     a = random.randint(10, 10000)
 
     result = find_number(a)
-    print(f'Если итог выражения равен: {a}')
-    print(f'Значение х: {result}')
+    print(f'If the result of the expression is equal to: {a}')
+    print(f'Meaning х: {result}')

@@ -14,4 +14,4 @@ if __name__ == "__main__":
 
     price_ruble, price_kopeck = cost(k1)
 
-    print(f'Стоимость товара: {price_ruble} рублей {price_kopeck} копеек.')
+    print(f'Cost of goods: {price_ruble} rubles {price_kopeck} kopecks.')

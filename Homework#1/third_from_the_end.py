@@ -11,4 +11,4 @@ if __name__ == "__main__":
     num1 = random.randint(100, 10000)
 
     third_digit = define(num1)
-    print('Третья цифра с конца:', third_digit)
+    print('Third digit from the end:', third_digit)

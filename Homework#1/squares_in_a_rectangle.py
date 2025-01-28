@@ -20,5 +20,5 @@ if __name__ == "__main__":
 
     quantity, remaining = result(a1, b1, c1)
 
-    print(f'Из прямоугольника со сторонами {a1} х {b1}, можно вырезать: {quantity} квадратов со стороной {c1}')
-    print(f'Оставшаяся площадь: {remaining}')
+    print(f'From a rectangle with sides {a1} х {b1}, can be cut out: {quantity} squares with a side {c1}')
+    print(f'Remaining area: {remaining}')

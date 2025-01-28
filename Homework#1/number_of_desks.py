@@ -18,4 +18,4 @@ if __name__ == "__main__":
 
     desks_needed = total_desks(x)
 
-    print('Необходимое количество парт равно:', desks_needed)
+    print('The required number of desks is:', desks_needed)

@@ -26,5 +26,5 @@ if __name__ == "__main__":
     result_perimetr = calculations(a1, b1, c1)
     result_area = area_of_triangle(a1, b1, c1)
 
-    print(f'Периметр треугольника АВС составляет: {result_perimetr:.2f}')
-    print(f'Площадь треугольника АВС составляет: {result_area:.2f}')
+    print(f'The perimeter of triangle ABC is: {result_perimetr:.2f}')
+    print(f'The area of triangle ABC is: {result_area:.2f}')

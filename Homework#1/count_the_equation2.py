@@ -19,5 +19,5 @@ if __name__ == "__main__":
 
     y_radians, y_degrees = equation(a1, b1, c1, d1, x1)
 
-    print(f'Если x задан в радианах, y = {y_radians}')
-    print(f'Если x задан в градусах, y = {y_degrees}')
+    print(f'If x is given in radians, y = {y_radians}')
+    print(f'If x is given in degrees, y = {y_degrees}')

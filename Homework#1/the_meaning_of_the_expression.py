@@ -19,4 +19,4 @@ if __name__ == "__main__":
 
     y = calculation(a1, b1, c1, d1)
 
-    print(f'Результат выражения "y = 3ab - 4 / (c * d)": {y:.2f}')
+    print(f'Result of the expression "y = 3ab - 4 / (c * d)": {y:.2f}')

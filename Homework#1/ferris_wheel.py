@@ -9,9 +9,12 @@ def quantity(a: int, b: int) -> int:
 
 if __name__ == "__main__":
 
-    a1 = random.randint(1,10)
-    b1 = random.randint(11,20)
+    while True:
+        a1 = random.randint(1,10)
+        b1 = random.randint(11,20)
+        if a1 % 2 == 0 or b1 % 2 == 0:
+            break
 
     result = quantity(a1, b1)
 
-    print('Количество кабинок в колесе обозрения равно:', result)
+    print('The number of cabins in a Ferris wheel is:', result)

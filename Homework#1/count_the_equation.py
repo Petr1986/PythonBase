@@ -17,5 +17,5 @@ if __name__ == "__main__":
 
     y_radians, y_degrees = equation(a1, x1)
 
-    print(f'Если х задан в радианах, у = {y_radians:.4f}')
-    print(f'Если х задан в градусах, y = {y_degrees:.4f}')
+    print(f'If x is given in radians, у = {y_radians:.4f}')
+    print(f'If x is given in degrees, y = {y_degrees:.4f}')

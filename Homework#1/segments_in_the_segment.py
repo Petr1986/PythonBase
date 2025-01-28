@@ -21,5 +21,5 @@ if __name__ == "__main__":
 
     quantity, remainder = calculation(a1, b1)
 
-    print(f'В отрезке длинной {a1}, помещается {quantity} отрезков длинны {b1}')
-    print('Остаток:', remainder)
+    print(f'In a long segment {a1}, fits {quantity} segments of length {b1}')
+    print('Remainder:', remainder)

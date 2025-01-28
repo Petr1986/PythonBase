@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     result = concatenation(x, y)
 
-    print('Шестизначное число: ', result)
+    print('Six digit number: ', result)
