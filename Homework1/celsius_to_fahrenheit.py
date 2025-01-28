@@ -6,11 +6,14 @@ are related by the following relationship: TC = (TF - 32) * 5 / 9"""
 import random
 
 def conversion(x: int) -> float:
-    return (x * 9 / 5) + 32
+    if not -273 <= x <= 1000:
+        raise ValueError(f'Temperature {x} is out of range')
+    return int((x * 9 / 5) + 32)
 
 if __name__ == "__main__":
 
-    celsius = random.randint(-30,50)
+    celsius = random.randint(-273,1000)
+    print(f'Temperature in Celsius: {celsius}')
 
     fahrenheit = conversion(celsius)
 
