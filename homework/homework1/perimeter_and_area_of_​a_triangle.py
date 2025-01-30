@@ -4,17 +4,27 @@ Find its perimeter and area"""
 import math
 import random
 
-def area_of_triangle(p1: tuple[int, int], p2: tuple[int, int], p3: tuple[int, int]) -> float:
-    if not all(-100 <= coord <= -1 for coord in (p1[0],p3[1])) or not all(0 <= coord <= 100 for coord in (p1[1],p2[0],p2[1],p3[0])):
-        raise ValueError('out of range')
-    return abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1])) / 2
+
+def area_of_triangle(
+    p1: tuple[int, int], p2: tuple[int, int], p3: tuple[int, int]
+) -> float:
+    if not all(-100 <= coord <= -1 for coord in (p1[0], p3[1])) or not all(
+        0 <= coord <= 100 for coord in (p1[1], p2[0], p2[1], p3[0])
+    ):
+        raise ValueError("out of range")
+    return (
+        abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1]))
+        / 2
+    )
 
 
-def distance (d1: tuple[int, int],d2: tuple[int, int]) -> float:
+def distance(d1: tuple[int, int], d2: tuple[int, int]) -> float:
     return math.sqrt((d2[0] - d1[0]) ** 2 + (d2[1] - d1[1]) ** 2)
 
-def calculations(a: tuple[int, int], b: tuple[int, int], c: tuple[int,int]) -> float:
+
+def calculations(a: tuple[int, int], b: tuple[int, int], c: tuple[int, int]) -> float:
     return distance(b, c) + distance(a, c) + distance(a, b)
+
 
 if __name__ == "__main__":
 
@@ -22,12 +32,12 @@ if __name__ == "__main__":
     b1 = (random.randint(0, 100), random.randint(0, 100))
     c1 = (random.randint(0, 100), random.randint(-100, -1))
 
-    print(f'point A = {a1}')
-    print(f'point B = {b1}')
-    print(f'point C = {c1}')
+    print(f"point A = {a1}")
+    print(f"point B = {b1}")
+    print(f"point C = {c1}")
 
     result_perimetr = calculations(a1, b1, c1)
     result_area = area_of_triangle(a1, b1, c1)
 
-    print(f'The perimeter of triangle ABC is: {result_perimetr:.2f}')
-    print(f'The area of triangle ABC is: {result_area:.2f}')
+    print(f"The perimeter of triangle ABC is: {result_perimetr:.2f}")
+    print(f"The area of triangle ABC is: {result_area:.2f}")

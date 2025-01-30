@@ -10,17 +10,19 @@ by adding 200. Based on this, we can form the equation
 
 import random
 
+
 def find_number(y: int) -> int:
     if 10 <= y <= 10000:
-        raise ValueError('out of range')
+        raise ValueError("out of range")
     return int(str(y)[1:] + str(y)[0])
+
 
 if __name__ == "__main__":
 
     a = random.randint(10, 10000)
 
-    print(f'result = {a}')
+    print(f"result = {a}")
 
     result = find_number(a)
-    print(f'If the result of the expression is equal to: {a}')
-    print(f'Meaning х: {result}')
+    print(f"If the result of the expression is equal to: {a}")
+    print(f"Meaning х: {result}")

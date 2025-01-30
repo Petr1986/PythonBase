@@ -1,2 +1,2 @@
-run black .
+black .
 isort . --profile black
