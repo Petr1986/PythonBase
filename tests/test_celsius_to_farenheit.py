@@ -1,4 +1,4 @@
-from Homework1.celsius_to_fahrenheit import conversion
+from homework1.celsius_to_fahrenheit import conversion
 import pytest
 
 @pytest.mark.parametrize("x, expected_result", [(-21, -5),

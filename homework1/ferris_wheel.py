@@ -5,6 +5,8 @@ How many cabins are there in the Ferris wheel?"""
 import random
 
 def quantity(a: int, b: int) -> int:
+    if not b > a:
+        raise ValueError('A should be more than B')
     return (b - a) * 2
 
 if __name__ == "__main__":
@@ -14,6 +16,9 @@ if __name__ == "__main__":
         b1 = random.randint(11,20)
         if a1 % 2 == 0 or b1 % 2 == 0:
             break
+
+    print(f'A = {a1}')
+    print(f'B = {b1}')
 
     result = quantity(a1, b1)
 

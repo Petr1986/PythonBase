@@ -6,6 +6,8 @@ from math import e, sin, radians
 
 
 def equation(a: int,x: int) -> tuple[float, float]:
+    if not -100 <= a <= 100 and 0 <= x <= 100:
+        raise ValueError('out of range')
     result_radians = e ** a * sin(x) ** 2 - abs(x - a) / 7
     result_degrees = e ** a * sin(radians(x)) ** 2 - abs(x - a) / 7
     return result_radians, result_degrees
@@ -14,6 +16,9 @@ if __name__ == "__main__":
 
     a1 = random.randint(-100, 100)
     x1 = random.randint(0, 100)
+
+    print(f'a = {a1}')
+    print(f'x = {x1}')
 
     y_radians, y_degrees = equation(a1, x1)
 

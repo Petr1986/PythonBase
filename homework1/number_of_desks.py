@@ -7,6 +7,8 @@ import math
 import random
 
 def quantity_desks(students: int) -> int:
+    if not 1 <= students <= 40:
+        raise ValueError('out of range')
     return math.ceil(students / 2)
 
 def total_desks(class_size: list[int]) -> int:
@@ -15,6 +17,10 @@ def total_desks(class_size: list[int]) -> int:
 if __name__ == "__main__":
 
     x = [random.randint(1,40) for _ in range(3)]
+
+    print(f'first class = {x[0]}')
+    print(f'second class = {x[1]}')
+    print(f'third class = {x[2]}')
 
     desks_needed = total_desks(x)
 

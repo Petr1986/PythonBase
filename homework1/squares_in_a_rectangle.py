@@ -5,18 +5,21 @@ import random
 
 
 def result(a: int, b: int, c: int) -> tuple[float, float]:
+    if not all(50 <= num <= 100 for num in(a,b)) or 1 <= c <= 49:
+        raise ValueError('out of range')
     quantity_squares = (a // c) * (b // c)
     remaining_area = a * b - quantity_squares * c ** 2
     return quantity_squares, remaining_area
 
 if __name__ == "__main__":
 
-    while True:
-        a1 = random.randint(1,100)
-        b1 = random.randint(1,100)
-        c1 = random.randint(1,100)
-        if c1 < a1 and c1 < b1:
-            break
+    a1 = random.randint(50,100)
+    b1 = random.randint(50,100)
+    c1 = random.randint(1,49)
+
+    print(f'size A = {a1}')
+    print(f'size B = {b1}')
+    print(f'side C = {c1}')
 
     quantity, remaining = result(a1, b1, c1)
 

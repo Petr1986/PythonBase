@@ -4,7 +4,9 @@ Find its perimeter and area"""
 import math
 import random
 
-def area_of_triangle(p1, p2, p3):
+def area_of_triangle(p1: tuple[int, int], p2: tuple[int, int], p3: tuple[int, int]) -> float:
+    if not all(-100 <= coord <= -1 for coord in (p1[0],p3[1])) or not all(0 <= coord <= 100 for coord in (p1[1],p2[0],p2[1],p3[0])):
+        raise ValueError('out of range')
     return abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1])) / 2
 
 
@@ -16,12 +18,13 @@ def calculations(a: tuple[int, int], b: tuple[int, int], c: tuple[int,int]) -> f
 
 if __name__ == "__main__":
 
-    while True:
-        a1 = (random.randint(-100, 100), random.randint(-100, 100))
-        b1 = (random.randint(-100, 100), random.randint(-100, 100))
-        c1 = (random.randint(-100, 100), random.randint(-100, 100))
-        if area_of_triangle(a1, b1, c1) > 0:
-            break
+    a1 = (random.randint(-100, -1), random.randint(0, 100))
+    b1 = (random.randint(0, 100), random.randint(0, 100))
+    c1 = (random.randint(0, 100), random.randint(-100, -1))
+
+    print(f'point A = {a1}')
+    print(f'point B = {b1}')
+    print(f'point C = {c1}')
 
     result_perimetr = calculations(a1, b1, c1)
     result_area = area_of_triangle(a1, b1, c1)
