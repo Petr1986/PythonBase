@@ -5,7 +5,7 @@ import random
 
 
 def calculation(x: int) -> int:
-    if 100 <= x <= 999:
+    if not 100 <= x <= 999:
         raise ValueError("out of range")
     return x // 100 + x % 100 // 10 + x % 10
 

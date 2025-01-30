@@ -6,11 +6,11 @@ import random
 
 
 def result(a: int, b: int, c: int) -> tuple[float, float]:
-    if not all(50 <= num <= 100 for num in (a, b)) or 1 <= c <= 49:
+    if not all(50 <= num <= 100 for num in (a, b)) or not 1 <= c <= 49:
         raise ValueError("out of range")
     quantity_squares = (a // c) * (b // c)
     remaining_area = a * b - quantity_squares * c**2
-    return quantity_squares, remaining_area
+    return round(quantity_squares, 2), round(remaining_area, 2)
 
 
 if __name__ == "__main__":

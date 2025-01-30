@@ -5,7 +5,7 @@ import random
 
 
 def define(num: int) -> int:
-    if 100 <= num <= 10000:
+    if not 100 <= num <= 10000:
         raise ValueError("out of range")
     return num % 1000 // 100
 

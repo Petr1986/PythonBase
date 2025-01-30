@@ -5,9 +5,9 @@ import random
 
 
 def calculation(a: int, b: int, c: int, d: int) -> float:
-    if all(-100 <= x <= 100 for x in (a, b, c, d)):
+    if not all(-100 <= x <= 100 for x in (a, b, c, d)):
         raise ValueError("out of range")
-    return 3 * a * b - 4 / (c * d)
+    return round(3 * a * b - 4 / (c * d), 2)
 
 
 if __name__ == "__main__":

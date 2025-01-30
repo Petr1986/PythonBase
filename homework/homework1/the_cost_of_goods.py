@@ -6,7 +6,7 @@ import random
 
 def cost(k: int) -> tuple[int, int]:
     if not 1 <= k <= 10000:
-        raise ValueError("out of rage")
+        raise ValueError("out of range")
     ruble = k // 100
     kopeck = k % 100
     return ruble, kopeck
