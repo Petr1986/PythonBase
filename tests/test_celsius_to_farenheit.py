@@ -1,4 +1,4 @@
-from homework1.celsius_to_fahrenheit import conversion
+from homework.homework1.celsius_to_fahrenheit import conversion
 import pytest
 
 

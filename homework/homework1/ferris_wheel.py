@@ -11,11 +11,8 @@ def quantity(a: int, b: int) -> int:
 
 if __name__ == "__main__":
 
-    while True:
-        a1 = random.randint(1,10)
-        b1 = random.randint(11,20)
-        if a1 % 2 == 0 or b1 % 2 == 0:
-            break
+    a1 = random.randint(1,10) * 2
+    b1 = random.randint(11,20) * 2
 
     print(f'A = {a1}')
     print(f'B = {b1}')

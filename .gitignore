@@ -1,5 +1,5 @@
 .idea/
-homework1/work.py
+homework/homework1/work.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

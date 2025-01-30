@@ -6,15 +6,15 @@ from math import e, sin, radians
 
 
 def equation(a: int,x: int) -> tuple[float, float]:
-    if not -100 <= a <= 100 and 0 <= x <= 100:
+    if not -20 <= a <= 20 or not 0 <= x <= 100:
         raise ValueError('out of range')
     result_radians = e ** a * sin(x) ** 2 - abs(x - a) / 7
     result_degrees = e ** a * sin(radians(x)) ** 2 - abs(x - a) / 7
-    return result_radians, result_degrees
+    return round(result_radians, 4), round(result_degrees, 4)
 
 if __name__ == "__main__":
 
-    a1 = random.randint(-100, 100)
+    a1 = random.randint(-20, 20)
     x1 = random.randint(0, 100)
 
     print(f'a = {a1}')
