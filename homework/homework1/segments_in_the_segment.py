@@ -7,7 +7,7 @@ B placed on segment A and find the length of the unoccupied part of the segment.
 import random
 
 
-def calculation(a: int, b: int) -> tuple[int, int]:
+def calculation_segments(a: int, b: int) -> tuple[int, int]:
     if not 1 <= b <= 49 or not 50 <= a <= 100:
         raise ValueError("out of range")
     result_quantity = a // b
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print(f"segment A = {a1}")
     print(f"segment B = {b1}")
 
-    quantity, remainder = calculation(a1, b1)
+    quantity, remainder = calculation_segments(a1, b1)
 
     print(f"In a long segment {a1}, fits {quantity} segments of length {b1}")
     print("Remainder:", remainder)

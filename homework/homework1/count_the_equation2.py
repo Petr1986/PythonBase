@@ -5,7 +5,7 @@ import random
 from math import e, sin, radians, sqrt
 
 
-def equation(a: int, b: int, c: int, d: int, x: int) -> tuple[float, float]:
+def equation2(a: int, b: int, c: int, d: int, x: int) -> tuple[float, float]:
     if not all(-20 <= v <= 20 for v in (a, b, c, d)) or not (0 <= x <= 100):
         raise ValueError("out of range")
     result_radians = e**a * sin(x) ** 2 - sqrt(abs((c - b**2) / a)) + d
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     print(f"d = {d1}")
     print(f"x = {x1}")
 
-    y_radians, y_degrees = equation(a1, b1, c1, d1, x1)
+    y_radians, y_degrees = equation2(a1, b1, c1, d1, x1)
 
     print(f"If x is given in radians, y = {y_radians:.4f}")
     print(f"If x is given in degrees, y = {y_degrees:.4f}")
