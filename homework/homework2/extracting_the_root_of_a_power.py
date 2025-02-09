@@ -7,10 +7,10 @@ import random
 
 
 def extracting_root(num: int, k: int, m: int) -> float:
-    if not all( 1 <= i <= 5 for i in(num, k)) or not 4 <= m <= 10:
-        raise ValueError('out of range')
-    a = str(num ** 10) * k
-    return round(int(a) ** (1/m), 3)
+    if not all(1 <= i <= 5 for i in (num, k)) or not 4 <= m <= 10:
+        raise ValueError("out of range")
+    a = str(num**10) * k
+    return round(int(a) ** (1 / m), 3)
 
 
 if __name__ == "__main__":
@@ -21,8 +21,8 @@ if __name__ == "__main__":
 
     result = extracting_root(num1, k1, m1)
 
-    print(f'Number = {num1}')
-    print(f'Write {k1} times')
-    print(f'root of degree {m1}')
+    print(f"Number = {num1}")
+    print(f"Write {k1} times")
+    print(f"root of degree {m1}")
 
-    print(f'result of expression = {result:.3f}')
+    print(f"result of expression = {result:.3f}")
