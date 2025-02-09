@@ -22,7 +22,9 @@ def distance(d1: tuple[int, int], d2: tuple[int, int]) -> float:
     return round(math.sqrt((d2[0] - d1[0]) ** 2 + (d2[1] - d1[1]) ** 2), 2)
 
 
-def calculation_perimetr(a: tuple[int, int], b: tuple[int, int], c: tuple[int, int]) -> float:
+def calculation_perimetr(
+    a: tuple[int, int], b: tuple[int, int], c: tuple[int, int]
+) -> float:
     return round(distance(b, c) + distance(a, c) + distance(a, b), 2)
 
 
