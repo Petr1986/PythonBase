@@ -1,6 +1,3 @@
-import random
-
-
 def sum_of_cubes() -> list:
     lst = []
     for i in range(100, 1000):
