@@ -1,21 +1,23 @@
-"""Given a three-digit integer. Using // and %,
-find the sum of its digits"""
+"""
+Given a three-digit integer. Using // and %,
+find the sum of its digits
+"""
 
 import random
 
 
-def calculation_sum_num(x: int) -> int:
-    if not 100 <= x <= 999:
-        raise ValueError("out of range")
-    return x // 100 + x % 100 // 10 + x % 10
+def calculation_sum_num(number: int) -> int:
+    min_value = 100
+    max_value = 999
+    if number < min_value or number > max_value:
+        raise ValueError("The number must be between 100 and 999")
+    return number // 100 + number % 100 // 10 + number % 10
 
 
 if __name__ == "__main__":
 
     num = random.randint(100, 999)
 
-    print(f"the three-digit number = {num}")
-
     result = calculation_sum_num(num)
 
-    print(f"Sum of the digits of a number {num}, equal: {result}")
+    print(f"Sum of the digits of a number {num}", f"equal: {result}", sep="\n")

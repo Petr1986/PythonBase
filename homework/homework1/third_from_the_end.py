@@ -1,20 +1,22 @@
-"""Assign the third digit from the end
-of the positive integer to the integer variable h"""
+"""
+Assign the third digit from the end
+of the positive integer to the integer variable h
+"""
 
 import random
 
 
-def define(num: int) -> int:
-    if not 100 <= num <= 10000:
-        raise ValueError("out of range")
-    return num % 1000 // 100
+def define(number: int) -> int:
+    min_value = 100
+    max_value = 10000
+    if number < min_value or number > max_value:
+        raise ValueError("The number must be between 100 and 10000")
+    return number % 1000 // 100
 
 
 if __name__ == "__main__":
 
     num1 = random.randint(100, 10000)
 
-    print(f"number = {num1}")
-
     third_digit = define(num1)
-    print("Third digit from the end:", third_digit)
+    print(f"number = {num1}", f"Third digit from the end: {third_digit}", sep="\n")

@@ -2,10 +2,12 @@
 
 import random
 
+
 def swap(number: str) -> int:
     if not 100 <= int(number) <= 999:
-        raise ValueError('out of range')
-    return int(number[-1] + number[1:len(number) -1] + number[0])
+        raise ValueError("out of range")
+    return int(number[-1] + number[1 : len(number) - 1] + number[0])
+
 
 if __name__ == "__main__":
 
@@ -13,4 +15,4 @@ if __name__ == "__main__":
 
     result = swap(number1)
 
-    print(f'Original number {number1} modified number {result}')
+    print(f"Original number {number1} modified number {result}")

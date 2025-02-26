@@ -1,15 +1,19 @@
-"""A school has decided to recruit three new math classes and
+"""
+A school has decided to recruit three new math classes and
 equip the classrooms with new desks. Two students can sit at each desk.
 The number of students in each of the three classes is known.
-Deduce the smallest number of desks that need to be purchased for them."""
+Deduce the smallest number of desks that need to be purchased for them.
+"""
 
 import math
 import random
 
 
 def quantity_desks(students: int) -> int:
-    if not 1 <= students <= 40:
-        raise ValueError("out of range")
+    min_value = 1
+    max_value = 48
+    if students < min_value or students > max_value:
+        raise ValueError("The number of students must be between 1 and 48")
     return math.ceil(students / 2)
 
 
@@ -21,10 +25,12 @@ if __name__ == "__main__":
 
     x = [random.randint(1, 40) for _ in range(3)]
 
-    print(f"first class = {x[0]}")
-    print(f"second class = {x[1]}")
-    print(f"third class = {x[2]}")
-
     desks_needed = total_desks(x)
 
-    print("The required number of desks is:", desks_needed)
+    print(
+        f"first class = {x[0]}",
+        f"second class = {x[1]}",
+        f"third class = {x[2]}",
+        f"The required number of desks is: {desks_needed}",
+        sep="\n",
+    )
