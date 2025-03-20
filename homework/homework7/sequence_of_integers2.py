@@ -4,13 +4,10 @@ import random
 def sequence_of_integers2():
     count = 0
     numbers = []
-    while True:
+    while len(numbers) < 10:
         number = random.randint(-10, 10)
-        if number == 0:
-            numbers.append(number)
-            break
-        else:
-            numbers.append(number)
+        numbers.append(number)
+    numbers.append(0)
     for x in range(1, len(numbers) - 1):
         if numbers[x] > numbers[x - 1]:
             count += 1

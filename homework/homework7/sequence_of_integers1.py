@@ -4,14 +4,11 @@ import random
 def sequence_of_integers1():
     total = 0
     numbers = []
-    while True:
+    while len(numbers) < 10:
         number = random.randint(-10, 10)
         total += number
-        if number == 0:
-            numbers.append(number)
-            break
-        else:
-            numbers.append(number)
+        numbers.append(number)
+    numbers.append(0)
     return numbers, round(total / len(numbers), 2)
 
 

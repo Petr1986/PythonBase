@@ -1,15 +1,18 @@
 import random
 
 
-def guessing_game():
+def guessing_game(number):
     answer = "y"
     while answer == "y":
-        number = random.randint(1, 10)
         while True:
-            num = int(input("Enter your answer: "))
+            print("Enter your answer: ", end="")  # Выводим перед каждым запросом ввода
+            num = int(input())
             if num == number:
                 print("You win")
-                answer = input("Let's play again? y/n: ")
+                print(
+                    "Let's play again? y/n: ", end=""
+                )  # Выводим запрос на повторную игру
+                answer = input()
                 break
             elif num > number:
                 print("The number guessed is less")
@@ -19,4 +22,6 @@ def guessing_game():
 
 if __name__ == "__main__":
 
-    print(guessing_game())
+    number1 = random.randint(1, 10)
+
+    print(guessing_game(number1))

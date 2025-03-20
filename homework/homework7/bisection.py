@@ -23,7 +23,7 @@ def bisection(a, b, epsilon):
 
 if __name__ == "__main__":
 
-    a1, b1 = 0, 1
+    a1, b1 = -1, 1
     epsilon1 = 1e-6
 
     result = bisection(a1, b1, epsilon1)

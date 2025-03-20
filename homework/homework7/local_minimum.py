@@ -15,7 +15,7 @@ def local_minimum(num: int):
         if i == 0 and sequence[i] < sequence[i + 1]:
             total += 1
         elif i == len(sequence) - 1 and sequence[i] < sequence[i - 1]:
-            total += sequence[i]
+            total += 1
         elif (
             0 < i < len(sequence) - 1
             and sequence[i] < sequence[i + 1]

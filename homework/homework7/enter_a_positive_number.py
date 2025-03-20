@@ -1,17 +1,18 @@
-import random
-
-
-def positive_number():
-    while True:
-        num = random.randint(-5, 5)
+def positive_number(input_func, max_attempts=3):
+    attempts = 0
+    while attempts < max_attempts:
+        print("Enter a positive number ", end="")
+        num = int(input_func(""))
         if num <= 0:
-            print("Enter a positive number")
-            continue
+            attempts += 1
+            print(f"Invalid input! Attempts left: {max_attempts - attempts}")
         else:
             print(f"You entered a positive number {num}")
-            break
+            return num
+    print("Too many invalid attempts. Exiting.")
+    return None
 
 
 if __name__ == "__main__":
 
-    positive_number()
+    positive_number(input)

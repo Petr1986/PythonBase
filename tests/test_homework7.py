@@ -1,9 +1,21 @@
+import pytest
+import random
+from io import StringIO
+
 from homework.homework7.integer_powers_of_a_number import integer_powers
 from homework.homework7.smallest_integer import smallest_integer
 from homework.homework7.athlete_run import athlete_run
 from homework.homework7.smallest_prime_divisor import smallest_prime_divisor
 from homework.homework7.fibonacci_number import fibonacci_number
-import pytest
+from homework.homework7.sequence_of_integers2 import sequence_of_integers2
+from homework.homework7.the_second_largest import the_second_largest
+from homework.homework7.sequence_of_integers3 import sequence_of_integers3
+from homework.homework7.sequence_of_integers1 import sequence_of_integers1
+from homework.homework7.reverse_number import reverse_number
+from homework.homework7.local_minimum import local_minimum
+from homework.homework7.guessing_game import guessing_game
+from homework.homework7.enter_a_positive_number import positive_number
+from homework.homework7.bisection import bisection, f
 
 
 @pytest.mark.parametrize(
@@ -55,6 +67,9 @@ def test_smallest_prime_divisor(num, expected_result):
     assert smallest_prime_divisor(num) == expected_result
 
 
+from unittest.mock import patch
+
+
 @pytest.mark.parametrize("num", [-5, 112, 155])
 def test_smallest_prime_divisor_out_of_range(num):
     with pytest.raises(ValueError, match="The number must be between 2 and 100."):
@@ -69,23 +84,206 @@ def test_fibonacci_number(num, expected_result):
 
 
 @pytest.mark.parametrize("num", [-20, 500, 428])
-def test__out_of_range(num):
+def test_fibonacci_number_out_of_range(num):
     with pytest.raises(
         ValueError, match="The number must be in the range from 1 to 200"
     ):
         fibonacci_number(num)
 
 
-# @pytest.mark.parametrize('num, expected_result', [(), (), ()])
-# def test_
+@pytest.mark.parametrize("num", [5, 10, 15])
+def test_the_second_largest(num):
+    sequence, second_largest = the_second_largest(num)
+    assert len(sequence) == num
+    assert 0 in sequence
+    if len(set(sequence)) > 1:
+        sorted_sequence = sorted(set(sequence), reverse=True)
+        assert second_largest == sorted_sequence[1]
+    else:
+        assert second_largest == 0
 
 
-# @pytest.mark.parametrize('num', [(), (), ()])
-# def test_
+@pytest.mark.parametrize(
+    "mock_values, expected_numbers, expected_count",
+    [
+        ([-8, 6, 2, -3, 9, 2, 9, 1, 5, 0, 0], [-8, 6, 2, -3, 9, 2, 9, 1, 5, 0, 0], 2),
+        (
+            [-5, -8, -6, 9, 5, -4, -6, 6, -5, -7, 0],
+            [-5, -8, -6, 9, 5, -4, -6, 6, -5, -7, 0],
+            1,
+        ),
+        (
+            [-1, 8, -9, -4, 2, 4, 9, 4, -2, 10, 0],
+            [-1, 8, -9, -4, 2, 4, 9, 4, -2, 10, 0],
+            1,
+        ),
+    ],
+)
+def test_sequence_of_integers3(mock_values, expected_numbers, expected_count):
+    with patch("random.randint", side_effect=mock_values):
+        numbers, count = sequence_of_integers3()
+        assert numbers == expected_numbers
+        assert count == expected_count
 
 
-# @pytest.mark.parametrize('num, expected_result', [(), (), ()])
-# def test_
+@pytest.mark.parametrize(
+    "mock_values, expected_numbers, expected_count",
+    [
+        (
+            [1, 5, 7, 3, 8, -6, 9, -10, -9, 10, 0],
+            [1, 5, 7, 3, 8, -6, 9, -10, -9, 10, 0],
+            6,
+        ),
+        (
+            [-5, 10, 9, -1, -2, 8, 4, -8, 0, -4, 0],
+            [-5, 10, 9, -1, -2, 8, 4, -8, 0, -4, 0],
+            3,
+        ),
+        (
+            [10, 9, 6, 2, -3, -9, -5, -4, 6, 4, 0],
+            [10, 9, 6, 2, -3, -9, -5, -4, 6, 4, 0],
+            3,
+        ),
+    ],
+)
+def test_sequence_of_integers2(mock_values, expected_numbers, expected_count):
+    with patch("random.randint", side_effect=mock_values):
+        numbers, count = sequence_of_integers2()
+        assert numbers == expected_numbers
+        assert count == expected_count
+
+
+@pytest.mark.parametrize(
+    "mock_values, expected_numbers, expected_value",
+    [
+        (
+            [-3, -5, 8, -7, -6, -8, -5, 5, 9, -7, 0],
+            [-3, -5, 8, -7, -6, -8, -5, 5, 9, -7, 0],
+            -1.73,
+        ),
+        (
+            [10, -5, -2, -4, 9, 9, 9, 9, 9, -10, 0],
+            [10, -5, -2, -4, 9, 9, 9, 9, 9, -10, 0],
+            3.09,
+        ),
+        (
+            [3, -8, -3, 5, 4, 2, 7, -8, -2, 8, 0],
+            [3, -8, -3, 5, 4, 2, 7, -8, -2, 8, 0],
+            0.73,
+        ),
+    ],
+)
+def test_sequence_of_integers1(mock_values, expected_numbers, expected_value):
+    with patch("random.randint", side_effect=mock_values):
+        numbers, value = sequence_of_integers1()
+        assert numbers == expected_numbers
+        assert value == expected_value
+
+
+@pytest.mark.parametrize(
+    "number, user_inputs, expected_output",
+    [
+        (12, ["21"], "You win"),
+        (13, ["32", "32", "31"], "Try again"),
+        (14, ["44", "42", "43", "41"], "Try again"),
+    ],
+)
+def test_reverse_number(number, user_inputs, expected_output, capsys):
+    def mock_input(prompt):
+        return user_inputs.pop(0)
+
+    with patch(
+        "homework.homework7.reverse_number.input", side_effect=user_inputs
+    ):  # Подменяем input
+        reverse_number(number=number, user_input_func=mock_input)  # Передаем mock_input
+        captured = capsys.readouterr()  # Захватываем вывод
+        assert expected_output in captured.out  # Проверяем вывод
+
+
+@pytest.mark.parametrize(
+    "num, mocked_randint_values, expected_sequence, expected_total",
+    [
+        (5, [1, 2, 0, 3, 4], [1, 2, 0, 3, 4], 1),
+        (5, [5, 1, 5, 1, 5], [5, 1, 5, 1, 5], 2),
+        (3, [0, 0, 0], [0, 0, 0], 0),
+        (4, [10, -10, 10, -10], [10, -10, 10, -10], 2),
+    ],
+)
+def test_local_minimum(
+    num, mocked_randint_values, expected_sequence, expected_total, monkeypatch
+):
+    monkeypatch.setattr(random, "randint", lambda x, y: mocked_randint_values.pop(0))
+    sequence, total = local_minimum(num)
+    assert sequence == expected_sequence
+    assert total == expected_total
+
+
+@pytest.mark.parametrize(
+    "number, user_input, expected_output",
+    [
+        # Тест 1: Игрок угадывает число с первой попытки и завершает игру
+        (7, ["7", "n"], "Enter your answer: You win\nLet's play again? y/n: "),
+        # Тест 2: Игрок угадывает число с нескольких попыток и завершает игру
+        (
+            7,
+            ["5", "8", "7", "n"],
+            "Enter your answer: The number guessed is higher\n"
+            "Enter your answer: The number guessed is less\n"
+            "Enter your answer: You win\n"
+            "Let's play again? y/n: ",
+        ),
+    ],
+)
+def test_guessing_game(number, user_input, expected_output):
+    with patch("builtins.input", side_effect=user_input), patch(
+        "sys.stdout", new_callable=StringIO
+    ) as mock_stdout:
+        guessing_game(number)  # Передаем загаданное число в функцию
+        assert mock_stdout.getvalue() == expected_output
+
+
+@pytest.mark.parametrize(
+    "input_values, expected",
+    [
+        (["1"], 1),  # Корректный ввод с первой попытки
+        (["0", "5"], 5),  # Некорректный ввод (ноль), затем корректный
+        (["-1", "10"], 10),  # Некорректный ввод (отрицательное число), затем корректный
+        (["0", "0", "0"], None),  # Три некорректных ввода (ноль), исчерпание попыток
+        (
+            ["-1", "-1", "-1"],
+            None,
+        ),  # Три некорректных ввода (отрицательное число), исчерпание попыток
+    ],
+)
+def test_positive_number(input_values, expected, monkeypatch):
+    # Имитируем последовательность вводов
+    input_generator = iter(input_values)
+    monkeypatch.setattr("builtins.input", lambda _: next(input_generator))
+
+    if expected is not None:
+        assert positive_number(input) == expected
+    else:
+        assert positive_number(input) is None
+
+
+@pytest.mark.parametrize(
+    "a, b, epsilon, expected",
+    [
+        (0, 1, 1e-6, 0.2499990463256836),  # f(0) = -0.5, f(1) ≈ 0.3415 (разные знаки)
+        (-1, 1, 1e-6, 0.0),  # f(-1) ≈ -1.3415, f(1) ≈ 0.3415 (разные знаки)
+    ],
+)
+def test_bisection(a, b, epsilon, expected):
+    try:
+        result = bisection(a, b, epsilon)
+        assert (
+            abs(result - expected) < epsilon
+        ), f"Expected {expected}, but got {result}"
+    except ValueError as e:
+        if f(a) * f(b) >= 0:
+            pytest.fail(f"Test failed because f(a) and f(b) have the same sign: {e}")
+        else:
+            raise e
 
 
 # @pytest.mark.parametrize('num', [(), (), ()])
