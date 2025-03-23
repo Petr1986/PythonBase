@@ -16,6 +16,7 @@ from homework.homework7.local_minimum import local_minimum
 from homework.homework7.guessing_game import guessing_game
 from homework.homework7.enter_a_positive_number import positive_number
 from homework.homework7.bisection import bisection, f
+from homework.homework7.balanced_sequence import balanced_sequence
 
 
 @pytest.mark.parametrize(
@@ -192,12 +193,10 @@ def test_reverse_number(number, user_inputs, expected_output, capsys):
     def mock_input(prompt):
         return user_inputs.pop(0)
 
-    with patch(
-        "homework.homework7.reverse_number.input", side_effect=user_inputs
-    ):  # Подменяем input
-        reverse_number(number=number, user_input_func=mock_input)  # Передаем mock_input
-        captured = capsys.readouterr()  # Захватываем вывод
-        assert expected_output in captured.out  # Проверяем вывод
+    with patch("homework.homework7.reverse_number.input", side_effect=user_inputs):
+        reverse_number(number=number, user_input_func=mock_input)
+        captured = capsys.readouterr()
+        assert expected_output in captured.out
 
 
 @pytest.mark.parametrize(
@@ -221,9 +220,7 @@ def test_local_minimum(
 @pytest.mark.parametrize(
     "number, user_input, expected_output",
     [
-        # Тест 1: Игрок угадывает число с первой попытки и завершает игру
         (7, ["7", "n"], "Enter your answer: You win\nLet's play again? y/n: "),
-        # Тест 2: Игрок угадывает число с нескольких попыток и завершает игру
         (
             7,
             ["5", "8", "7", "n"],
@@ -238,25 +235,24 @@ def test_guessing_game(number, user_input, expected_output):
     with patch("builtins.input", side_effect=user_input), patch(
         "sys.stdout", new_callable=StringIO
     ) as mock_stdout:
-        guessing_game(number)  # Передаем загаданное число в функцию
+        guessing_game(number)
         assert mock_stdout.getvalue() == expected_output
 
 
 @pytest.mark.parametrize(
     "input_values, expected",
     [
-        (["1"], 1),  # Корректный ввод с первой попытки
-        (["0", "5"], 5),  # Некорректный ввод (ноль), затем корректный
-        (["-1", "10"], 10),  # Некорректный ввод (отрицательное число), затем корректный
-        (["0", "0", "0"], None),  # Три некорректных ввода (ноль), исчерпание попыток
+        (["1"], 1),
+        (["0", "5"], 5),
+        (["-1", "10"], 10),
+        (["0", "0", "0"], None),
         (
             ["-1", "-1", "-1"],
             None,
-        ),  # Три некорректных ввода (отрицательное число), исчерпание попыток
+        ),
     ],
 )
 def test_positive_number(input_values, expected, monkeypatch):
-    # Имитируем последовательность вводов
     input_generator = iter(input_values)
     monkeypatch.setattr("builtins.input", lambda _: next(input_generator))
 
@@ -268,10 +264,7 @@ def test_positive_number(input_values, expected, monkeypatch):
 
 @pytest.mark.parametrize(
     "a, b, epsilon, expected",
-    [
-        (0, 1, 1e-6, 0.2499990463256836),  # f(0) = -0.5, f(1) ≈ 0.3415 (разные знаки)
-        (-1, 1, 1e-6, 0.0),  # f(-1) ≈ -1.3415, f(1) ≈ 0.3415 (разные знаки)
-    ],
+    [(0, 1, 1e-6, 0.2499990463256836), (-1, 1, 1e-6, 0.0)],
 )
 def test_bisection(a, b, epsilon, expected):
     try:
@@ -284,6 +277,26 @@ def test_bisection(a, b, epsilon, expected):
             pytest.fail(f"Test failed because f(a) and f(b) have the same sign: {e}")
         else:
             raise e
+
+
+@pytest.mark.parametrize(
+    "length, expected_zeros, expected_ones, expected_twos",
+    [(6, 2, 2, 2), (7, 2, 3, 2), (9, 3, 3, 3), (10, 3, 4, 3)],
+)
+def test_balanced_sequence(length, expected_zeros, expected_ones, expected_twos):
+    sequence = balanced_sequence(length)
+
+    assert len(sequence) == length
+
+    count_0 = sequence.count("0")
+    count_1 = sequence.count("1")
+    count_2 = sequence.count("2")
+
+    assert count_0 == expected_zeros
+    assert count_1 == expected_ones
+    assert count_2 == expected_twos
+
+    assert all(c in {"0", "1", "2"} for c in sequence)
 
 
 # @pytest.mark.parametrize('num', [(), (), ()])
